@@ -1,0 +1,37 @@
+<body class="fixed-sn light-blue-skin">
+    <div *ngIf="afAuth.user | async as user">
+
+        <header>
+        
+            <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
+
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
+
+                    <li class="nav-item mx-2">
+                        <a class="nav-link">
+                            <i class="fas fa-user mx-2"></i> 
+                            <span class="clearfix d-none d-sm-inline-block text-white">
+                                {{ user.displayName }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-danger btn-rounded btn-block z-depth-0 waves-effect"
+                          (click)="logout()">
+                          Sign out
+                        </button>
+                    </li>
+                    
+                </ul>
+
+            </nav>
+    
+        </header>
+
+        <p>Name: {{ user.displayName }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>User ID: {{ user.uid }}</p>
+
+    </div>
+</body>
