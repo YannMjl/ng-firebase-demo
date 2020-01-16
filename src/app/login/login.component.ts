@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
     loading = false;
+    action: 'login' | 'signup' = 'login';
 
     constructor(
         private router: Router,
@@ -49,6 +50,14 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = false;
+    }
+
+    get isLogin() {
+        return this.action === 'login';
+    }
+
+    get isSignUp() {
+        return this.action === 'signup';
     }
 
 }

@@ -2,21 +2,24 @@
 <div class="row d-flex justify-content-center">
 
     <!-- Default form register -->
-    <form class="text-center border border-light p-5" action="#!" #form="ngForm" (submit)="onSubmit(form)" [class.loading]="loading">
+    <form class="text-center border border-light p-5 rounded" action="#!" #form="ngForm" (submit)="onSubmit(form)" [class.loading]="loading">
 
-        <p class="h4 mb-4">Sign up</p>
+        <p class="h4 mb-4">Welcome!</p>
 
-        <div class="form-row mb-4">
+        <div class="form-row mb-4" *ngIf="isSignUp">
+
             <div class="col">
-            <!-- First name -->
-            <input type="text" name="firstName" id="defaultRegisterFormFirstName" class="form-control"
-              placeholder="First Name" ngModel>
+                <!-- First name -->
+                <input type="text" name="firstName" id="defaultRegisterFormFirstName" class="form-control"
+                placeholder="First Name" ngModel>
             </div>
+
             <div class="col">
-            <!-- Last name -->
-            <input type="text" name="lastName" id="defaultRegisterFormLastName" class="form-control"
-              placeholder="Last Name" ngModel>
+                <!-- Last name -->
+                <input type="text" name="lastName" id="defaultRegisterFormLastName" class="form-control"
+                placeholder="Last Name" ngModel>
             </div>
+
         </div>
 
         <!-- E-mail -->
@@ -27,40 +30,54 @@
         <input type="password" name="password" id="defaultRegisterFormPassword" class="form-control"
           placeholder="Password"
             aria-describedby="defaultRegisterFormPasswordHelpBlock" ngModel>
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4" *ngIf="isSignUp">
             At least 8 characters and 1 digit
         </small>
 
-        <!-- Phone number -->
-        <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-            aria-describedby="defaultRegisterFormPhoneHelpBlock" ngModel>
-        <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-            Optional - for two step authentication
-        </small>
+        <div *ngIf="isSignUp">
 
-        <!-- Newsletter -->
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
-            <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+            <!-- Phone number -->
+            <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
+                aria-describedby="defaultRegisterFormPhoneHelpBlock" ngModel>
+            <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                Optional - for two step authentication
+            </small>
+
+            <!-- Newsletter -->
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+                <label class="custom-control-label" for="defaultRegisterFormNewsletter">Subscribe to our newsletter</label>
+            </div>
+
         </div>
 
         <!-- Sign up button -->
-        <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+        <button class="btn btn-info my-4 btn-block" type="submit">
+            {{ action | uppercase }}
+        </button>
+        <span *ngIf="isLogin">
+            or
+            <a href="#" (click)="action = 'signup'">
+                Sign Up
+            </a>
+        </span>
+        <span *ngIf="isSignUp">
+          or
+          <a href="#" (click)="action = 'login'">
+            login
+          </a>
+        </span>
 
-        <!-- Social register -->
-        <p>or sign up with:</p>
+        <div *ngIf="isSignUp">
 
-        <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-        <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
+            <hr>
 
-        <hr>
+            <!-- Terms of service -->
+            <p>By clicking
+                <em>Sign up</em> you agree to our
+                <a href="" target="_blank">terms of service</a>
 
-        <!-- Terms of service -->
-        <p>By clicking
-            <em>Sign up</em> you agree to our
-            <a href="" target="_blank">terms of service</a>
+        </div>
 
     </form>
     <!-- Default form register -->
