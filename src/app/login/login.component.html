@@ -2,26 +2,30 @@
 <div class="row d-flex justify-content-center">
 
     <!-- Default form register -->
-    <form class="text-center border border-light p-5" action="#!" #form="ngForm" (submit)="onSubmit(form)">
+    <form class="text-center border border-light p-5" action="#!" #form="ngForm" (submit)="onSubmit(form)" [class.loading]="loading">
 
         <p class="h4 mb-4">Sign up</p>
 
         <div class="form-row mb-4">
             <div class="col">
             <!-- First name -->
-            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" ngModel>
+            <input type="text" name="firstName" id="defaultRegisterFormFirstName" class="form-control"
+              placeholder="First Name" ngModel>
             </div>
             <div class="col">
             <!-- Last name -->
-            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" ngModel>
+            <input type="text" name="lastName" id="defaultRegisterFormLastName" class="form-control"
+              placeholder="Last Name" ngModel>
             </div>
         </div>
 
         <!-- E-mail -->
-        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" ngModel>
+        <input type="email" name="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail"
+          ngModel>
 
         <!-- Password -->
-        <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+        <input type="password" name="password" id="defaultRegisterFormPassword" class="form-control"
+          placeholder="Password"
             aria-describedby="defaultRegisterFormPasswordHelpBlock" ngModel>
         <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
             At least 8 characters and 1 digit
@@ -41,7 +45,7 @@
         </div>
 
         <!-- Sign up button -->
-        <button class="btn btn-info my-4 btn-block" type="submit">Sign in</button>
+        <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
 
         <!-- Social register -->
         <p>or sign up with:</p>
