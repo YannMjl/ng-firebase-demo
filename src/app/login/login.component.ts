@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+    error: string;
     loading = false;
     action: 'login' | 'signup' = 'login';
 
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     async onSubmit(form: NgForm) {
 
         this.loading = true;
+        this.error = null;
 
         const {
             firstName,
@@ -33,20 +35,28 @@ export class LoginComponent implements OnInit {
             phoneNumber
         } = form.value;
 
+        let resp;
+
         try {
-            const resp = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
 
-            await resp.user.updateProfile(
-                {displayName: `${firstName} ${lastName}`}
-            );
+            if (this.isSignUp) {
+                resp = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
 
-            form.reset();
+                await resp.user.updateProfile(
+                    { displayName: `${firstName} ${lastName}` }
+                );
+
+                form.reset();
+            } else {
+                resp = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+            }
 
             const uid = resp.user.uid;
             this.router.navigate([`/profile/${uid}`]);
 
         } catch (error) {
             console.log(error.message);
+            this.error = error.message;
         }
 
         this.loading = false;
