@@ -12,6 +12,7 @@ const redirectToProfile = () => map(
 );
 
 const onlyAllowSelf = next => map(
+  // tslint:disable-next-line: triple-equals
   user => (!!user && next.params.id == (user as any).uid) || ['']
 );
 
