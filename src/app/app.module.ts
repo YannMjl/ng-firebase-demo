@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
     MDBBootstrapModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [],
+  providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
