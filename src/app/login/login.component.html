@@ -60,14 +60,16 @@
         </button>
         <span *ngIf="isLogin">
             or
-            <a href="#" (click)="action = 'signup'">
+            <a class="font-weight-bold" href="#" (click)="action = 'signup'">
                 Sign Up
+                <i class="fas fa-sign-in-alt"></i>
             </a>
         </span>
         <span *ngIf="isSignUp">
           or
-          <a href="#" (click)="action = 'login'">
-            login
+          <a class="font-weight-bold" href="#" (click)="action = 'login'">
+            Login
+            <i class="fas fa-sign-in-alt"></i>
           </a>
         </span>
 
@@ -78,7 +80,7 @@
             <!-- Terms of service -->
             <p>By clicking
                 <em>Sign up</em> you agree to our
-                <a href="" target="_blank">terms of service</a>
+                <a>terms of service</a>
 
         </div>
 
