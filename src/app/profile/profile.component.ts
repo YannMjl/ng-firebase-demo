@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+// import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../core/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from '../core/auth.service';
 export class ProfileComponent implements OnInit {
 
     constructor(
-        private afAuth: AngularFireAuth,
+        // private afAuth: AngularFireAuth,
         private authservice: AuthService
     ) { }
 
