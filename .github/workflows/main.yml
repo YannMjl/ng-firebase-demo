@@ -26,9 +26,6 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: '10.x'
-      # update rxjs
-      - name: Update package
-        run: npm install rxjs
       # Install the dependencies need to build the app
       - name: Install Dependencies
         run: npm install
