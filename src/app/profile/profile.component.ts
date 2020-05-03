@@ -10,7 +10,7 @@ import { AuthService } from '../core/auth.service';
 export class ProfileComponent implements OnInit {
 
     constructor(
-        private afAuth: AngularFireAuth,
+        public afAuth: AngularFireAuth,
         private authservice: AuthService
     ) { }
 
