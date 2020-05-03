@@ -25,7 +25,10 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@master
         with:
-          node-version: '14.x'
+          node-version: '10.x'
+      # update rxjs
+      - name: Update package
+        run: npm install --save rxjs@latest
       # Install the dependencies need to build the app
       - name: Install Dependencies
         run: npm install
@@ -49,7 +52,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
-          node-version: '14.x'
+          node-version: '10.x'
       - run: npm install
       - run: npm run build --prod
       # ddeploy the angular app to firebase
