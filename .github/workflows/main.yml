@@ -31,7 +31,7 @@ jobs:
         run: npm install
       # Runs a set of commands to build
       - name: Build
-        run: npm run build:prod
+        run: npm run build --prod
       # sotre the artifact
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
@@ -51,7 +51,7 @@ jobs:
         with:
           node-version: '14.x'
       - run: npm install
-      - run: npm run build:prod
+      - run: npm run build --prod
       # ddeploy the angular app to firebase
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
