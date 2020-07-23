@@ -39,23 +39,24 @@ jobs:
           name: dist
           path: dist
      
-#   deploy:
-#     name: Deploy to firebase
+  deploy:
+    name: Deploy to firebase
   
-#     runs-on: ubuntu-latest
-    
-#     steps:
-#       # building the app before deploy
-#       - uses: actions/checkout@master
-#       - uses: actions/setup-node@master
-#         with:
-#           node-version: '10.x'
-#       - run: npm install
-#       - run: npm run build --prod
-#       # ddeploy the angular app to firebase
-#       - name: Deploy angular app to Firebase
-#         uses: w9jds/firebase-action@master
-#         with:
-#           args: deploy --only hosting
-#         env:
-#           FIREBASE_TOKEN: ${{ secrets.firebase_token }}
+    runs-on: ubuntu-latest
+    # only run if build job complte successfully 
+    needs: [build]
+    steps:
+      # building the app before deploy
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: '10.x'
+      - run: npm install
+      - run: npm run build --prod
+      # ddeploy the angular app to firebase
+      - name: Deploy angular app to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.firebase_token }}
