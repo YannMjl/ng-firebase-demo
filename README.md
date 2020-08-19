@@ -32,4 +32,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Demo | Production env.
 
-Check out [My demo app](https://ng-vanila.firebaseapp.com/)
+Check out [My demo app here](https://ng-vanila.firebaseapp.com/)
