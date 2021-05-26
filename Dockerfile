@@ -15,25 +15,25 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # both package.json and package-lock.json are copied
-# COPY package*.json /app
+COPY package*.json /app
+
+# Install app dependencies and
+RUN npm install -g npm-check-updates \
+    ncu -u \
+    npm install
 
 # This will copy everything from the source path 
 # --more of a convenience when testing locally.
 COPY . .
 
-# Install app dependencies and build the angular app
-RUN npm install -g npm-check-updates \
-    ncu -u \
-    npm install \
+# install angular CLI and build the app
+RUN npm install -g @angular/cli \
     npm run build --prod
 
 # -----------------------------------------------------------------*
 # Step 2: runthe angular app
 # -----------------------------------------------------------------*
 FROM nginx
-
-# copy the nginx config files
-COPY nginx.conf /etc/nginx/nginx.conf
 
 # --from=build, this is "build" form the step 1 
 # /app/public, /app is my working directory defined in step 1
