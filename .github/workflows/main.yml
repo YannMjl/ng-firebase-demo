@@ -1,6 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-
-name: CI
+name: CI/CD
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -41,7 +40,6 @@ jobs:
      
   deploy:
     name: Deploy to firebase
-  
     runs-on: ubuntu-latest
     # only run if build job complte successfully 
     needs: [build]
@@ -51,9 +49,13 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '10.x'
-      - run: npm install
-      - run: npm run build --prod
-      # ddeploy the angular app to firebase
+      # Install the dependencies need to build the app
+      - name: Install Dependencies
+        run: npm install
+      # build the app
+      - name: Build the app artifact for prod
+        run: npm run build --prod
+      # ddeploy the app artifact to firebase
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
         with:
