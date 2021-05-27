@@ -38,7 +38,8 @@ jobs:
         with:
           name: public
           path: ./public
-     
+
+  # deploy the app to firebase   
   deploy:
     name: Deploy to firebase
     runs-on: ubuntu-latest
